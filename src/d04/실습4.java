@@ -304,7 +304,7 @@ public class 실습4 {
         */
 
         // 문제 14 *
-        /*
+
         System.out.print("첫 번째 정수: ");
         int int1 = scan.nextInt();
         System.out.print("두 번째 정수: ");
@@ -313,26 +313,27 @@ public class 실습4 {
         int int3 = scan.nextInt();
 
         int temp;
-        if (int1 < int2) {
+        if (int1 > int2) {
             temp = int1;
             int1 = int2;
             int2 = temp;
         }
-        if (int2 < int3) {
+        if (int1 > int3) {
+            temp = int1;
+            int1 = int3;
+            int3 = temp;
+        }
+        if (int2 > int3) {
             temp = int2;
             int2 = int3;
             int3 = temp;
         }
-        if (int3 < int1) {
-            temp = int3;
-            int3 = int1;
-            int1 = temp;
-        }
 
         System.out.printf("%d, %d, %d", int1, int2, int3);
-        */
+
 
         // 문제 15 *
+        /*
         System.out.print("플레이어1 (0:가위, 1:바위, 2:보): ");
         int p1 = scan.nextInt();
         System.out.print("플레이어2 (0:가위, 1:바위, 2:보): ");
@@ -341,5 +342,6 @@ public class 실습4 {
         if (p1 == (p2 + 1) % 3) System.out.println("플레이어1 승리");
         else if (p1 == p2) System.out.println("무승부");
         else System.out.println("플레이어2 승리");
+        */
     }
 }
