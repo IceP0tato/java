@@ -274,6 +274,9 @@ public class 실습4 {
             System.out.println("겨울");
         else
             System.out.println("잘못된 월입니다.");
+
+
+        // if (month >= 3 && month <= 5) 의 형식으로도 가능 (int)
         */
 
         // 문제 12
@@ -291,6 +294,8 @@ public class 실습4 {
         if (int3 > max) max = int3;
 
         System.out.println("가장 큰 수: " + max);
+
+        // int max = int1; 로 초기화해도 무관 (가장 큰 수로 임의 지정)
         */
 
         // 문제 13
@@ -331,6 +336,7 @@ public class 실습4 {
 
         System.out.printf("%d, %d, %d", int1, int2, int3);
 
+        // a b c: a>b, a>c, b>c
 
         // 문제 15 *
         /*
