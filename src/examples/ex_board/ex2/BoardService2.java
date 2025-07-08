@@ -1,23 +1,22 @@
-/* [JAVA] 종합예제3 : boardService3 (객체 활용)
-[ 목표 ] 종합예제2 에서 객체 문법 추가하여 , 최대 100개의 게시물을 저장하고 조회할 수 있는 간단한 콘솔 게시판 프로그램을 구현합니다.
+/* [JAVA] 종합예제2 : boardService2 (배열 활용)
+[ 목표 ] 종합예제1 에서 배열 문법 추가하여 , 최대 100개의 게시물을 저장하고 조회할 수 있는 간단한 콘솔 게시판 프로그램을 구현합니다.
 [ 요구사항 ]
     1. 게시물 저장 공간 만들기
         · 최대 100개의 게시물을 저장할 수 있어야 합니다.
-        · 각 게시물은 '내용'과 '작성자' 속성 를 가지는 Board 클래스 선언하시오..
-        · 총 1개의 Board[] 배열변수를 선언하여 저장 공간을 만드세요. (예: Board[] boards = new Board[100] )
+        · 각 게시물은 '내용'과 '작성자' 정보를 가집니다.
+        · 총 2개의 String[] 배열변수를 선언하여 저장 공간을 만드세요. (예: String[] contents = new String[100] , String[] writers = new String[100] )
         · 모든 변수는 null로 초기화하여, 해당 공간이 비어있음을 나타내도록 합니다.
     2. 메인 프로그램 흐름 구현하기
         · 프로그램은 사용자가 강제 종료하기 전까지 계속 실행되어야 합니다. for(;;) 무한루프를 사용하세요.
         · 무한루프 안에서 사용자에게 메뉴를 보여주고, Scanner를 통해 원하는 기능의 번호를 입력받으세요.
         · 기능 1: 게시물 쓰기 (입력값: 1)
             - 사용자가 1을 입력하면, "내용 : "과 "작성자 : "를 순서대로 물어보고 입력받습니다.
-            - Board 객체로 생성하여 입력받은 '내용' 과 '작성자'를 각 멤버변수에 대입 합니다.
             - 가장 먼저 발견된 빈 공간에 입력받은 내용과 작성자를 저장하고 "[안내] 글쓰기 성공" 메시지를 출력합니다.
-            - 게시물 공간이 모두 차 있다면, "[경고] 게시물을 등록할 공간이 부족합니다." 라는 메시지를 출력합니다.
+            - 만약 100개의 게시물 공간이 모두 차 있다면, "[경고] 게시물을 등록할 공간이 부족합니다." 라는 메시지를 출력합니다.
         · 기능 2: 게시물 출력 (입력값: 2)
             - 사용자가 2를 입력하면, 저장된 모든 게시물을 아래 형식으로 출력합니다.
             - 저장 공간이 비어있지 않은(null이 아닌) 경우에만 출력합니다.
-[ 실행 예시 ]  <종합예제2 과 동일 참고>
+[ 실행 예시 ]  <종합예제1 과 동일 참고>
 ============= My Community =============
   1.게시물쓰기 | 2.게시물출력
 ========================================
@@ -54,13 +53,14 @@
 작성자 : 이수근
 [경고] 게시물을 등록할 공간이 부족합니다. */
 
-package examples.board;
+package examples.ex_board.ex2;
 
 import java.util.Scanner;
 
-public class BoardService3 {
+public class BoardService2 {
     public static void main(String[] args) {
-        Board[] boards = new Board[100]; // board 객체 100개 저장 가능한 배열 자료 boards 1개
+        String[] contents = new String[100];
+        String[] writers = new String[100];
         Scanner scan = new Scanner(System.in);
 
         for (;;) {
@@ -72,43 +72,36 @@ public class BoardService3 {
             String stringIn;
 
             if (numIn == 1) {
-                Board board = new Board(); // 객체 생성하여 입력받은 값을 멤버변수 대입
-
-                System.out.print("작성자 : ");
-                stringIn = scan.next();
-                board.writer = stringIn;
-
-                System.out.print("내용 : ");
-                stringIn = scan.next();
-                board.content = stringIn;
-
-                boolean check = false;
-                for (int i=0; i<boards.length; i++) {
-                    if (boards[i] == null) {
-                        boards[i] = board; // 해당 i번째 요소에 생성한 객체 대입
-                        check = true;
+                for (int i=0; i<contents.length; i++) {
+                    if (contents[contents.length-1] != null) {
+                        System.out.println("[경고] 게시물을 등록할 공간이 부족합니다.");
                         break;
+                    } else {
+                        if (contents[i] == null && writers[i] == null) {
+                            scan.nextLine();
+                            System.out.print("작성자 : ");
+                            stringIn = scan.next();
+                            writers[i] = stringIn;
+
+                            System.out.print("내용 : ");
+                            stringIn = scan.next();
+                            contents[i] = stringIn;
+
+                            System.out.println("[안내] 글쓰기 성공");
+                            break;
+                        }
                     }
                 }
-
-                if (check) System.out.println("[안내] 글쓰기 성공");
-                else System.out.println("[경고] 게시물을 등록할 공간이 부족합니다.");
-
             } else if (numIn == 2) {
                 System.out.println("============= 게시물 목록 =============");
-                for (int i=0; i<boards.length; i++) {
-                    if (boards[i] != null) {
-                        System.out.println("작성자 : " + boards[i].writer);
-                        System.out.println("내용 : " + boards[i].content);
+                for (int i=0; i<contents.length; i++) {
+                    if (contents[i] != null && writers[i] != null) {
+                        System.out.println("작성자 : " + writers[i]);
+                        System.out.println("내용 : " + contents[i]);
                         System.out.println("------------------------------------");
                     } else break;
                 }
             }
         }
     }
-}
-
-class Board {
-    String content;
-    String writer;
 }

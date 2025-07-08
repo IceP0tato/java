@@ -52,7 +52,7 @@
 인원수 : 3
 [경고] 더 이상 대기 등록을 할 수 없습니다. */
 
-package examples;
+package examples.assignment.ex1;
 
 import java.util.Scanner;
 

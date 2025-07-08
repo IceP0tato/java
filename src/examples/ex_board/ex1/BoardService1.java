@@ -54,7 +54,7 @@
 작성자 : 이수근
 [경고] 게시물을 등록할 공간이 부족합니다. */
 
-package examples.board;
+package examples.ex_board.ex1;
 
 import java.util.Scanner;
 
