@@ -5,8 +5,8 @@ public class Goods {
     int price;
 
     Goods() {
-        this.name = "미정";
-        this.price = 0;
+        name = "미정";
+        price = 0;
     }
 
     Goods(String name, int price) {

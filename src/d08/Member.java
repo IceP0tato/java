@@ -5,7 +5,7 @@ public class Member {
     boolean isLogin;
 
     Member() {
-        this.id = "guest";
-        this.isLogin = false;
+        id = "guest";
+        isLogin = false;
     }
 }
