@@ -15,7 +15,7 @@ public class Example2 {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String db_url = "jdbc:mysql://localhost:3306/mydb0722", db_user = "root", db_password = "1234";
             // DriverManager: DB 연동 클래스(구현체)
-            // DB 연동 함수 (서버 주소, 게정명, 비밀번호)
+            // DB 연동 함수 (서버 주소, 계정명, 비밀번호)
             Connection conn = DriverManager.getConnection(db_url, db_user, db_password);
             System.out.println("데이터베이스 연동 완료");
 
