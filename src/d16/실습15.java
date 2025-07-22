@@ -81,12 +81,14 @@ public class 실습15 {
 
         // 문제 4
         /* try {
-            FileOutputStream fout = new FileOutputStream("src/d16/visit_log.txt");
+            // fout 매개변수: name (파일 경로), append (뒤로 이어쓰기 여부)
+            FileOutputStream fout = new FileOutputStream("src/d16/visit_log.txt", true);
             Scanner scan = new Scanner(System.in);
             System.out.print("방문자 이름 입력: ");
-            String str = scan.next();
+            String name = scan.next();
+            String output = name + "님이 방문했습니다.\n";
 
-            fout.write((str + "님이 방문했습니다.\n").getBytes()); // 누적 X
+            fout.write(output.getBytes());
         } catch (Exception e) {
             System.out.println(e);
         } */
@@ -143,12 +145,11 @@ public class 실습15 {
 
             String result = new String(bytes, "EUC-KR");
             String[] rowData = result.split("\n");
-            System.out.println();
-            for (int i=1; i<rowData.length; i++) {
+            for (int i=0; i<rowData.length; i++) {
                 String row = rowData[i];
                 String[] columnData = row.split(",");
 
-                System.out.printf("동별: [%s], 총 인구: [%d]명\n", columnData[1], Integer.parseInt(columnData[3]));
+                System.out.printf("동별: [%s], 총 인구: [%s]명\n", columnData[1], columnData[3]);
             }
         } catch (Exception e) {
             System.out.println(e);
